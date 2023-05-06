@@ -31,11 +31,14 @@ public class EnemyController : MonoBehaviour
         foreach (GameObject enemyObject in enemyObjects)
         {
             Transform enemyTransform = enemyObject.transform;
+            EnemyCombatant enemyCombatant = enemyObject.GetComponent<EnemyCombatant>();
 
             //  ვამოწმებთ დისტანციას ენემისა და ფლეერის შორის. თუ თრეშჰოლდზე ნაკლებია, ენემი სიარულს იწყებს
             if (enemyTransform.position.x - playerTransform.position.x <= distanceThreshold)
             {
                 enemyTransform.position += enemyTransform.right * speed * Time.deltaTime; // წინსვლა
+
+                if (enemyCombatant.isLoaded == false) enemyCombatant.isLoaded = true;
             }
         }
     }

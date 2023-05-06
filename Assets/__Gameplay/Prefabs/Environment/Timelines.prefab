@@ -612,6 +612,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6455199453461634188}
     m_Modifications:
+    - target: {fileID: 4908127660040117374, guid: 82a1e532584e35049a29ddde61a2585b, type: 3}
+      propertyPath: firerate
+      value: 0.6666666
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908127660040117374, guid: 82a1e532584e35049a29ddde61a2585b, type: 3}
+      propertyPath: aimThreshold
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908127660040117374, guid: 82a1e532584e35049a29ddde61a2585b, type: 3}
+      propertyPath: bulletSpread
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6116407089439889072, guid: 82a1e532584e35049a29ddde61a2585b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -622,7 +634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6116407089439889072, guid: 82a1e532584e35049a29ddde61a2585b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6116407089439889072, guid: 82a1e532584e35049a29ddde61a2585b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -969,6 +981,10 @@ PrefabInstance:
     - target: {fileID: 6116407089439889073, guid: 82a1e532584e35049a29ddde61a2585b, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116407089439889073, guid: 82a1e532584e35049a29ddde61a2585b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82a1e532584e35049a29ddde61a2585b, type: 3}
@@ -1527,6 +1543,10 @@ PrefabInstance:
     - target: {fileID: 6116407089439889073, guid: 82a1e532584e35049a29ddde61a2585b, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116407089439889073, guid: 82a1e532584e35049a29ddde61a2585b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6116407089439889078, guid: 82a1e532584e35049a29ddde61a2585b, type: 3}
       propertyPath: m_Sprite
