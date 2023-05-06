@@ -8,10 +8,10 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 2003
-  m_Shader: {fileID: -6465566751694194690, guid: c37e5adead2e3304bb3e269d3cc669a9, type: 3}
-  m_ValidKeywords:
+  m_Shader: {fileID: -6465566751694194690, guid: 645be5b8370079e48b043141243c250e, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _NOISE_TYPE_GRADIENT
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -72,7 +72,9 @@ Material:
     - _Noise_Scale: 1
     - _Pixelation: 256
     - _RippleSpeed: 1
-    - _Ripple_Count: 3.76
+    - _Ripple_Count: 0.5
+    - _Ripple_Speed: 1.25
+    - _Ripple_Strength: 0.25
     - _Size: 0
     - _Size_Multiplier: 0
     - _Strength: 1.5
@@ -88,6 +90,7 @@ Material:
     - _Offset: {r: -0.5, g: -0.5, b: 0, a: 0}
     - _Position: {r: -5021.883, g: 0.86086446, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Ripple_Center: {r: 0, g: 0, b: 0, a: 0}
     - _Smoothstep: {r: 0, g: 1, b: 0, a: 0}
     - _Speed: {r: 0, g: -1, b: 0, a: 0}
     - _Timer_Color: {r: 1, g: 1, b: 1, a: 0}
