@@ -186,7 +186,7 @@ public class PlayerController : ShootingDriver
             {
                 CinemachineBasicMultiChannelPerlin cvcp = cinemachineVC.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
-                cvcp.m_FrequencyGain = 1f;
+                cvcp.m_FrequencyGain = 0.5f;
             }
         }
     }

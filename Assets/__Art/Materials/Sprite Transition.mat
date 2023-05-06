@@ -7,9 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Scanlines
-  m_Shader: {fileID: -6465566751694194690, guid: 950a36a5acde6e1419b113c7b7e7ccf6, type: 3}
-  m_ValidKeywords: []
+  m_Name: Sprite Transition
+  m_Shader: {fileID: -6465566751694194690, guid: c37e5adead2e3304bb3e269d3cc669a9, type: 3}
+  m_ValidKeywords:
+  - _NOISE_TYPE_GRADIENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -20,8 +21,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_B23C5A35:
-        m_Texture: {fileID: 2800000, guid: 6f07f062be4ad2b44a8848f539509d4b, type: 3}
+    - _2043Tex:
+        m_Texture: {fileID: 2800000, guid: 0654649aef2a85f458b49538c5794814, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlphaTex:
@@ -40,6 +41,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_1de5af0504024b57896da84c8fcdd1d4_Texture_1:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_7b05cabc5f5d4edeac9da93f8af829c6_Out_0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -54,29 +63,32 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Boolean_4b961c4ada6e43bc94be045f3c543894: 0
-    - Vector1_276010af9a3f47889123f15c9a592f80: 3
-    - Vector1_37BECE45: 0.125
-    - Vector1_90AD79C5: 12
+    - _Blur: 32
+    - _Edge_Strength: 359.49
+    - _Edge_Thickness: 1
     - _EnableExternalAlpha: 0
-    - _QueueControl: 0
-    - _QueueOffset: 0
+    - _MP: 0.79
+    - _NOISE_TYPE: 1
+    - _Noise_Scale: 1
+    - _Pixelation: 256
+    - _RippleSpeed: 1
+    - _Ripple_Count: 3.76
+    - _Size: 9.938318e-13
+    - _Size_Multiplier: 0
+    - _Strength: 1.5
+    - _Timer: 0.623
+    - _Twirl: 1.25
+    - _Twirl_Multiplier: 0.12
+    - _Voronoi_Offset: 5.25
     m_Colors:
-    - Color_DFFCE5B8: {r: 0, g: 0, b: 0, a: 0}
+    - _Back_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Center: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _Offset: {r: -0.5, g: -0.5, b: 0, a: 0}
+    - _Position: {r: -38.427284, g: 0.75059974, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Smoothstep: {r: 0, g: 1, b: 0, a: 0}
+    - _Speed: {r: 0, g: -1, b: 0, a: 0}
+    - _Timer_Color: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &1660987782948166235
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 5

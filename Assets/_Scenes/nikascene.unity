@@ -1178,6 +1178,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3438953015338262409, guid: 3be7df3052b88754bb8b8b9e8fdc7a4f, type: 3}
+      propertyPath: weight
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3438953015338262409, guid: 3be7df3052b88754bb8b8b9e8fdc7a4f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3438953015367731513, guid: 3be7df3052b88754bb8b8b9e8fdc7a4f, type: 3}
       propertyPath: m_Name
       value: Lighting
