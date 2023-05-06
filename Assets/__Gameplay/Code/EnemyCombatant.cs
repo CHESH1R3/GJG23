@@ -124,22 +124,8 @@ public class EnemyCombatant : ShootingDriver
 
         //print(obsticleLocation);
 
-        print(distanceToBorders.x - distanceToBorders.y);
+        print(Mathf.Abs(distanceToBorders.x - distanceToBorders.y));
 
-        if (distanceToBorders.x > distanceToBorders.y)
-        {
-            print("dabla");
-            //transform.Translate(0, 0.3f, 0);
-        }
-        else if (distanceToBorders.x < distanceToBorders.y)
-        {
-            print("magla");
-            //transform.Translate(0, -0.3f, 0);
-        }
-        else if(Mathf.Abs(distanceToBorders.x - distanceToBorders.y) <= 2.28)
-        {
-            print("shuashi");
-        }
 
 
         if (rightHit)
@@ -154,22 +140,33 @@ public class EnemyCombatant : ShootingDriver
             }
             else if (obsticleLocation == "none")
             {
-               
-                //if (transform.position.y < distanceToBorders.x)
-                //{
 
+                //if (Mathf.Abs(distanceToBorders.x - distanceToBorders.y) <= 2.28)
+                //{
+                //    print("shushi");
+
+                //    if (Random.Range(0,2) == 1)
+                //    {
+                //        transform.Translate(0, 0.3f, 0);
+                //    }
+                //    else
+                //    {
+                //        transform.Translate(0, -0.3f, 0);
+                //    }
                 //}
+
 
                 if (distanceToBorders.x > distanceToBorders.y)
                 {
                     print("dabla");
-                    //transform.Translate(0, 0.3f, 0);
+                    transform.Translate(0, 0.3f, 0);
                 }
                 else if (distanceToBorders.x < distanceToBorders.y)
                 {
                     print("magla");
-                    //transform.Translate(0, -0.3f, 0);
+                    transform.Translate(0, -0.3f, 0);
                 }
+
             }
         }
 

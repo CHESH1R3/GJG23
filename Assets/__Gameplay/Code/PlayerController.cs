@@ -9,6 +9,7 @@ public class PlayerController : ShootingDriver
 {
     [Header("Camera")]
     public Transform camTarget; // თრანსფორმი რომელსაც ცინემაშინი დაყვება
+    public Transform spriteTransform; // სპრაიტის თრანსფორმი რომელიც უნდა დატრიალდეს
 
     [Header("Movement")]
     public float automaticSpeed = 20f; // ავტომატური წინსვლის სისწრაფე
@@ -126,13 +127,13 @@ public class PlayerController : ShootingDriver
 
             if (verticalInput != 0)
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation,
-                Quaternion.Euler(transform.rotation.x, transform.rotation.y, steeringAngle), 0.3f);
+                spriteTransform.rotation = Quaternion.Lerp(spriteTransform.rotation,
+                Quaternion.Euler(spriteTransform.rotation.x, spriteTransform.rotation.y, steeringAngle), 0.3f);
             }
             else
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation,
-                Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0), 0.3f);
+                spriteTransform.rotation = Quaternion.Lerp(spriteTransform.rotation,
+                Quaternion.Euler(spriteTransform.rotation.x, spriteTransform.rotation.y, 0), 0.3f);
             }
         }
         else if (activeSteerSpeed < 0)
@@ -142,13 +143,13 @@ public class PlayerController : ShootingDriver
 
             if (verticalInput != 0)
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation,
-                Quaternion.Euler(transform.rotation.x, transform.rotation.y, -steeringAngle), 0.3f);
+                spriteTransform.rotation = Quaternion.Lerp(spriteTransform.rotation,
+                Quaternion.Euler(spriteTransform.rotation.x, spriteTransform.rotation.y, -steeringAngle), 0.3f);
             }
             else
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation,
-                Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0), 0.3f);
+                spriteTransform.rotation = Quaternion.Lerp(spriteTransform.rotation,
+                Quaternion.Euler(spriteTransform.rotation.x, spriteTransform.rotation.y, 0), 0.3f);
             }
         }
     }
