@@ -38,6 +38,5 @@ public class EnemyController : MonoBehaviour
                 enemyTransform.position += enemyTransform.right * speed * Time.deltaTime; // წინსვლა
             }
         }
-
     }
 }

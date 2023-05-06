@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,8 +19,15 @@ public class PlayerController : MonoBehaviour
     public Transform max, min; // ფლეერი კედლების იქით რომ არ გავიდეს ტრანსფორმი შევადაროთ. კოლაიდერზე უფრო ოპტიმალურია, ნაკლებ ფიზიკაზე ვინერვიულებთ
 
     [Header("Combat")]
+    public bool canShoot = true;    // შეუძლია თუ არა სროლა
+    public GameObject bulletPrefab; // ტყვიის პრეფაბი
+    public float firerate;  // სროლის სისწრაფე
+    public Transform firingPoint; // ტრანსფორმი საიდანაც ისვრის
+    public float bulletSpread = 1; // ტყვიის სპრედი
     public int hP = 3;  // დარჩენილი სიცოცხლე
     public int damage = 1;  // რამდენ დემეჯს იძლევა ერთ სროლაში
+    public float bulletShakeStrength = 10f;   // გასროლაზე სქრინ შეიქის რაოდენობა
+    public float bulletShakeLength = 0.25f;   // გასროლაზე სქრინ შეიქის სიხანგრძლივე
 
     [Header("Shift")]
     public bool canShift = true;    // შეუძლია თუ არა დროში გადახტეს
@@ -30,7 +38,11 @@ public class PlayerController : MonoBehaviour
 
     float verticalInput, horizontalInput;    // ინპუტი რომ შევინახოთ ფლეერის
     public bool shiftInput = false; // ფლეერის ნახტომის ინპუტი
+    public bool shootInput = false; // ფლეერის სროლის ინპუტი
     float activeSteerSpeed, activeDriveSpeed; // ამ კონკრეტულ მომენტში აქსელერაცია სადამდეა მისული
+
+    public CinemachineVirtualCamera cinemachineVC;   // ცინემაშინის კამერა სქრინ შეიქისთვის
+    float shakeTime = 0;
 
     private void Start()
     {
@@ -45,6 +57,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         GetPlayerInput();
+        ShakeTimer();
     }
 
     void GetPlayerInput()
@@ -56,6 +69,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             if (canShift) shiftInput = true;
+        }
+
+        // სროლის ინპუტის აღება
+        if (Input.GetMouseButton(0))
+        {
+            if (canShoot) if (shootInput == false) shootInput = true;
         }
     }
 
@@ -69,6 +88,12 @@ public class PlayerController : MonoBehaviour
         {
             shiftInput = false;
             Shift();
+        }
+
+        if (shootInput)
+        {
+            shootInput = false;
+            Shoot();
         }
     }
 
@@ -135,6 +160,22 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator ShiftCooldown() { yield return new WaitForSeconds(cooldown); canShift = true; }
 
+    void Shoot()
+    {
+        canShoot = false;
+
+        // ტყვიის შექმნა და ტრანსფორმის ამოღება
+        Transform newBullet = Instantiate(bulletPrefab, firingPoint.position, firingPoint.rotation).transform;
+        // ტყვიაზე ცოტა სპრედის დადება
+        newBullet.eulerAngles = new Vector3(newBullet.rotation.x, newBullet.rotation.y, Random.Range(-bulletSpread, bulletSpread));
+
+        CameraShake(bulletShakeStrength, bulletShakeLength);
+
+        // სროლის ქულდაუნზე გაშვება
+        StartCoroutine(ShootCooldown());
+    }
+    IEnumerator ShootCooldown() { yield return new WaitForSeconds(firerate); canShoot = true; }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         // თუ ობსთექლს შეეხო ეგრევე კვდება
@@ -146,5 +187,27 @@ public class PlayerController : MonoBehaviour
 
         print("RIP");
         SceneManager.LoadScene(0);
+    }
+
+    void CameraShake(float strength, float length)
+    {
+        CinemachineBasicMultiChannelPerlin cvcp = cinemachineVC.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+        cvcp.m_FrequencyGain = strength;
+        shakeTime += length;
+    }
+    void ShakeTimer()
+    {
+        if(shakeTime > 0)
+        {
+            shakeTime -= Time.deltaTime;
+
+            if (shakeTime <= 0)
+            {
+                CinemachineBasicMultiChannelPerlin cvcp = cinemachineVC.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+                cvcp.m_FrequencyGain = 1f;
+            }
+        }
     }
 }
