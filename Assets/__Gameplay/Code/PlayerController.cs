@@ -118,6 +118,8 @@ public class PlayerController : MonoBehaviour
             // თუ ქვედა კედელს არ ეხება, ქვემოთ შეუძლია მოხვევა
             if (transform.position.x >= min.position.x) transform.position += transform.right * activeDriveSpeed * drivingSpeed * Time.deltaTime;
         }
+
+        //  ასევე, ეს ზუსტად იგივე კოდია რაც Steer()ში გამოიყენება, უბრალოდ გამოცვლილი ცვლადებით. ძალიან ნიჭიერი პროგრამისტი ვარ. - Z
     }
 
     void Shift()
