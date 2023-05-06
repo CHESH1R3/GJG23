@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 304961962514888666}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Firing Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2937902766906355449}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.625, y: -0.125, z: 0}
+  m_LocalPosition: {x: -2, y: -0.125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6116407089439889079}
   - component: {fileID: 4908127660040117374}
   - component: {fileID: 4023312610058401595}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -168,9 +168,6 @@ MonoBehaviour:
   aimThreshold: 1.25
   distanceThreshold: 17.5
   randomModifier: 1
-  defaultSteerSpeed: 25
-  rayRange: 5
-  up: 0
 --- !u!50 &4023312610058401595
 Rigidbody2D:
   serializedVersion: 4

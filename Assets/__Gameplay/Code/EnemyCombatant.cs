@@ -36,6 +36,7 @@ public class EnemyCombatant : ShootingDriver
             if(!isAimed)
             {
                 // აქ უნდა შეიცვალოს პოზიცია რომ ფლეერს დაუმიზნოს
+                
             }
         }
 
@@ -71,6 +72,7 @@ public class EnemyCombatant : ShootingDriver
 
     void Shoot()
     {
+        print("SHOT");
         canShoot = false;
 
         // ტყვიის შექმნა და ტრანსფორმის ამოღება
