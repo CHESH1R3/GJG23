@@ -18,7 +18,6 @@ public class EnemyCombatant : ShootingDriver
     public float distanceThreshold = 17.5f;
     public float randomModifier = 2.5f;
 
-
     private void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -33,11 +32,16 @@ public class EnemyCombatant : ShootingDriver
         if (isLoaded)
         {
             CheckAim();
+
+            if(!isAimed)
+            {
+                // აქ უნდა შეიცვალოს პოზიცია რომ ფლეერს დაუმიზნოს
+            }
         }
 
         if (coolingDown)
         {
-            Cooldown();
+            Cooldown(); // სროლის ქულდაუნი
         }
     }
    
@@ -47,11 +51,12 @@ public class EnemyCombatant : ShootingDriver
         {
             isAimed = true;
         }
-        else { if (isAimed) isAimed = false; }
+        else { isAimed = false; }
     }
 
     private void FixedUpdate()
     {
+        // თუ ენემი ჩატვირთულია, სროლა შეუძლია, და დამიზნებული აქ, ისროლოს
         if (isLoaded)
         {
             if (canShoot)
@@ -59,10 +64,6 @@ public class EnemyCombatant : ShootingDriver
                 if (isAimed)
                 {
                     Shoot();
-                }
-                else
-                {
-                    Move();
                 }
             }
         }
@@ -82,6 +83,7 @@ public class EnemyCombatant : ShootingDriver
     }
     void Cooldown()
     {
+        // ვითვლით უკან დროს სროლაზე
         fireCooldown += Time.deltaTime;
         if (fireCooldown >= firerate)
         {
@@ -90,14 +92,9 @@ public class EnemyCombatant : ShootingDriver
         }
     }
 
-    void Move()
-    {
-        //if (transform.position.y )
-    }
-
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Bullet")
+        if (other.tag == "PlayerBullet")
         {
             hP--;
             if (hP == 0)
