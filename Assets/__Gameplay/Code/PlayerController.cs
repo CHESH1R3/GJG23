@@ -65,7 +65,7 @@ public class PlayerController : ShootingDriver
         }
 
         // სროლის ინპუტის აღება
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(1) && Time.timeScale > 0)
         {
             if (canShoot) if (shootInput == false) shootInput = true;
         }

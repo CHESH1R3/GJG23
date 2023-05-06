@@ -25,6 +25,7 @@ public class EnemyCombatant : ShootingDriver
         playerTransform = playerController.transform;
 
         distanceThreshold += Random.Range(-randomModifier, randomModifier);
+
     }
 
     private void Update()
@@ -51,7 +52,20 @@ public class EnemyCombatant : ShootingDriver
 
     private void FixedUpdate()
     {
-        if (isLoaded) { if (canShoot) { if (isAimed) { Shoot(); } } }
+        if (isLoaded)
+        {
+            if (canShoot)
+            {
+                if (isAimed)
+                {
+                    Shoot();
+                }
+                else
+                {
+                    Move();
+                }
+            }
+        }
     }
 
     void Shoot()
@@ -75,6 +89,12 @@ public class EnemyCombatant : ShootingDriver
             fireCooldown = 0;
         }
     }
+
+    void Move()
+    {
+        //if (transform.position.y )
+    }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Bullet")
