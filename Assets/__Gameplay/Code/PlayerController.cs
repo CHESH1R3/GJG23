@@ -59,13 +59,13 @@ public class PlayerController : ShootingDriver
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
         // დროში ნახტომის ინპუტის აღება
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && Time.timeScale > 0)
         {
             if (canShift) shiftInput = true;
         }
 
         // სროლის ინპუტის აღება
-        if (Input.GetMouseButtonDown(1) && Time.timeScale > 0)
+        if (Input.GetMouseButton(0))
         {
             if (canShoot) if (shootInput == false) shootInput = true;
         }
