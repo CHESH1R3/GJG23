@@ -8,9 +8,11 @@ public class SetRipple : MonoBehaviour
     public float rippleSpeed;
     public float rippleStrength;
 
-    public float rippleMax;
+    public float rippleCountMax;
+    public float rippleStrengthMax;
 
-    public float rippleThreshold;
+    public float rippleCountThreshold;
+    public float rippleMaxThreshold;
 
     public bool is2003;
 
@@ -21,20 +23,22 @@ public class SetRipple : MonoBehaviour
 
     void Transition()
     {
-        float rippleCount = rippleMaterial.GetFloat("_Ripple Count");
-        float rippleSpeed = rippleMaterial.GetFloat("_Ripple Speed");
+        float matRippleCount = rippleMaterial.GetFloat("_Ripple_Count");
+        float matRippleSpeed = rippleMaterial.GetFloat("_Ripple_Speed");
 
         if (!is2003)
         {
-            if (rippleCount != rippleMax) rippleCount = Mathf.Lerp(rippleCount, rippleMax, this.rippleCount * Time.deltaTime);
+            if (matRippleCount != rippleCountMax) matRippleCount = Mathf.Lerp(matRippleCount, rippleCountMax, rippleCount * Time.deltaTime);
+            if (matRippleCount + rippleCountThreshold >= rippleCountMax)
+            {
+                if (matRippleCount != 0) matRippleCount = Mathf.Lerp(matRippleCount, 0, rippleCount * Time.deltaTime);
+            }
         }
         else
         {
-            if (rippleCount != 0) rippleCount = Mathf.Lerp(rippleCount, 0, this.rippleCount * 2 * Time.deltaTime);
         }
 
-        rippleMaterial.SetFloat("_Size", rippleCount);
-        rippleMaterial.SetFloat("_Pixelation", rippleSpeed);
-        rippleMaterial.SetVector("_Position", new Vector2(-transform.position.x, -transform.position.y));
+        rippleMaterial.SetFloat("_Ripple_Count", matRippleCount);
+        rippleMaterial.SetFloat("_Ripple_Speed", matRippleSpeed);
     }
 }
