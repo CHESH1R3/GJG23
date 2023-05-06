@@ -1,33 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class EnemyCombatant : MonoBehaviour
+public class EnemyCombatant : ShootingDriver
 {
     [Header("Combat")]
     public bool isLoaded = false;   // ჩატვირთული არის თუ არა
     public bool isAimed = false;    // დამიზნებული არის თუ არა
-    public bool canShoot = false;    // შეუძლია თუ არა სროლა
 
     PlayerController playerController;
     Transform playerTransform;
 
     public float aimThreshold = 1.75f; // საჭირო დისტანცია გასროლვამდე
 
-    public GameObject bulletPrefab; // ტყვიის პრეფაბი
-    public float firerate = 0.66f;  // სროლის სისწრაფე
-    public Transform firingPoint; // ტრანსფორმი საიდანაც ისვრის
-    public float bulletSpread = 5f; // ტყვიის სპრედი
-    public int hP = 5;  // დარჩენილი სიცოცხლე
-    public int damage = 1;  // რამდენ დემეჯს იძლევა ერთ სროლაში
-
     bool coolingDown;   // ქულდაუნი აქტიურია თუ არა
     float fireCooldown = 0; // რა ფაზაზეა ქულდაუნი
+
+    public float distanceThreshold = 17.5f;
+    public float randomModifier = 2.5f;
+
 
     private void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
         playerTransform = playerController.transform;
+
+        distanceThreshold += Random.Range(-randomModifier, randomModifier);
     }
 
     private void Update()
@@ -77,5 +74,26 @@ public class EnemyCombatant : MonoBehaviour
             canShoot = true;
             fireCooldown = 0;
         }
+    }
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Bullet")
+        {
+            hP--;
+            if (hP == 0)
+            {
+                DestroyCombatant();
+            }
+        }
+        else if (other.tag == "Obstacle")
+        {
+            DestroyCombatant();
+        }
+    }
+    public void DestroyCombatant()
+    {
+        // აქ იქნება სიკვდილის და რესტარტის ფუნქცია. ამჯერად უბრალოდ სცენა დარესეტდება
+
+        Destroy(gameObject);
     }
 }

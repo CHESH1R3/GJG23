@@ -9,8 +9,6 @@ public class EnemyController : MonoBehaviour
 
     public GameObject[] enemyObjects;
 
-    public float distanceThreshold;
-
     private void Awake()
     {
         enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
@@ -30,15 +28,18 @@ public class EnemyController : MonoBehaviour
 
         foreach (GameObject enemyObject in enemyObjects)
         {
-            Transform enemyTransform = enemyObject.transform;
-            EnemyCombatant enemyCombatant = enemyObject.GetComponent<EnemyCombatant>();
-
-            //  ვამოწმებთ დისტანციას ენემისა და ფლეერის შორის. თუ თრეშჰოლდზე ნაკლებია, ენემი სიარულს იწყებს
-            if (enemyTransform.position.x - playerTransform.position.x <= distanceThreshold)
+            if (enemyObject != null)
             {
-                enemyTransform.position += enemyTransform.right * speed * Time.deltaTime; // წინსვლა
+                Transform enemyTransform = enemyObject.transform;
+                EnemyCombatant enemyCombatant = enemyObject.GetComponent<EnemyCombatant>();
 
-                if (enemyCombatant.isLoaded == false) enemyCombatant.isLoaded = true;
+                //  ვამოწმებთ დისტანციას ენემისა და ფლეერის შორის. თუ თრეშჰოლდზე ნაკლებია, ენემი სიარულს იწყებს
+                if (enemyTransform.position.x - playerTransform.position.x <= enemyCombatant.distanceThreshold)
+                {
+                    enemyTransform.position += enemyTransform.right * speed * Time.deltaTime; // წინსვლა
+
+                    if (enemyCombatant.isLoaded == false) enemyCombatant.isLoaded = true;
+                }
             }
         }
     }

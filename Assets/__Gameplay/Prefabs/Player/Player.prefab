@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797698412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.25, y: 0, z: 0}
+  m_LocalPosition: {x: 1.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -133,6 +133,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8148cb6f1f79eee419b335865f16ef16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canShoot: 1
+  bulletPrefab: {fileID: 6379185386594331347, guid: 71a855e83c24b9147b6a224cde619eed, type: 3}
+  firerate: 0.15
+  firingPoint: {fileID: 797698413}
+  bulletSpread: 5
+  hP: 1
   camTarget: {fileID: 0}
   automaticSpeed: 20
   steeringSpeed: 10
@@ -142,13 +148,6 @@ MonoBehaviour:
   boundTransform: {fileID: 0}
   max: {fileID: 0}
   min: {fileID: 0}
-  canShoot: 1
-  bulletPrefab: {fileID: 6379185386594331347, guid: 71a855e83c24b9147b6a224cde619eed, type: 3}
-  firerate: 0.15
-  firingPoint: {fileID: 797698413}
-  bulletSpread: 2.5
-  hP: 3
-  damage: 1
   bulletShakeStrength: 7.5
   bulletShakeLength: 0.125
   canShift: 1

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : ShootingDriver
 {
     [Header("Camera")]
     public Transform camTarget; // თრანსფორმი რომელსაც ცინემაშინი დაყვება
@@ -18,14 +18,7 @@ public class PlayerController : MonoBehaviour
     public Transform boundTransform; // ბაუნდების ფარენთი
     public Transform max, min; // ფლეერი კედლების იქით რომ არ გავიდეს ტრანსფორმი შევადაროთ. კოლაიდერზე უფრო ოპტიმალურია, ნაკლებ ფიზიკაზე ვინერვიულებთ
 
-    [Header("Combat")]
-    public bool canShoot = true;    // შეუძლია თუ არა სროლა
-    public GameObject bulletPrefab; // ტყვიის პრეფაბი
-    public float firerate;  // სროლის სისწრაფე
-    public Transform firingPoint; // ტრანსფორმი საიდანაც ისვრის
-    public float bulletSpread = 1; // ტყვიის სპრედი
-    public int hP = 3;  // დარჩენილი სიცოცხლე
-    public int damage = 1;  // რამდენ დემეჯს იძლევა ერთ სროლაში
+    [Header("Screen Shake")]
     public float bulletShakeStrength = 10f;   // გასროლაზე სქრინ შეიქის რაოდენობა
     public float bulletShakeLength = 0.25f;   // გასროლაზე სქრინ შეიქის სიხანგრძლივე
 
@@ -176,19 +169,6 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator ShootCooldown() { yield return new WaitForSeconds(firerate); canShoot = true; }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        // თუ ობსთექლს შეეხო ეგრევე კვდება
-        if (other.tag == "Obstacle") { Die(); }
-    }
-    void Die()
-    {
-        // აქ იქნება სიკვდილის და რესტარტის ფუნქცია. ამჯერად უბრალოდ სცენა დარესეტდება
-
-        print("RIP");
-        SceneManager.LoadScene(0);
-    }
-
     void CameraShake(float strength, float length)
     {
         CinemachineBasicMultiChannelPerlin cvcp = cinemachineVC.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
@@ -209,5 +189,28 @@ public class PlayerController : MonoBehaviour
                 cvcp.m_FrequencyGain = 1f;
             }
         }
+    }
+
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Bullet")
+        {
+            hP--;
+            if (hP == 0)
+            {
+                DestroyCombatant();
+            }
+        }
+        else if (other.tag == "Obstacle")
+        {
+            DestroyCombatant();
+        }
+    }
+    public void DestroyCombatant()
+    {
+        // აქ იქნება სიკვდილის და რესტარტის ფუნქცია. ამჯერად უბრალოდ სცენა დარესეტდება
+
+        SceneManager.LoadScene(0);
     }
 }

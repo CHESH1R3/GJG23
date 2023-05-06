@@ -300,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   enemyObjects: []
-  distanceThreshold: 15
+  distanceThreshold: 17.5
 --- !u!1 &6455199453353573283
 GameObject:
   m_ObjectHideFlags: 0
