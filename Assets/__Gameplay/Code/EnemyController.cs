@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
     {
         playerTransform = playerController.transform;
 
-        speed = playerController.speed;
+        speed = playerController.automaticSpeed;
     }
 
     private void FixedUpdate()

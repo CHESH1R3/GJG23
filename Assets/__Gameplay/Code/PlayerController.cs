@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,10 +8,14 @@ public class PlayerController : MonoBehaviour
     public Transform camTarget; // თრანსფორმი რომელსაც ცინემაშინი დაყვება
 
     [Header("Movement")]
-    public float speed = 20f; // წინსვლის სისწრაფე
+    public float automaticSpeed = 20f; // ავტომატური წინსვლის სისწრაფე
     public float steeringSpeed = 10f; // მოხვევის სისწრაფე
     public float steeringAcceleration = 7.5f;  // რამდენად მალე რაზგონდება მოსახვევად
-    
+    public float drivingSpeed = 5f; // ხელით წინსვლის სისწრაფე
+    public float drivingAcceleration = 7.5f;  // რამდენად მალე რაზგონდება საწინსვლოდ
+
+
+
     public Transform max, min; // ფლეერი კედლების იქით რომ არ გავიდეს ტრანსფორმი შევადაროთ. კოლაიდერზე უფრო ოპტიმალურია, ნაკლებ ფიზიკაზე ვინერვიულებთ
 
     [Header("Combat")]
@@ -70,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        transform.position += transform.right * speed * Time.deltaTime; // წინსვლა
+        transform.position += transform.right * automaticSpeed * Time.deltaTime; // წინსვლა
 
         // კამერა თარგეთის დააფდეითება
         camTarget.position = new Vector3(transform.position.x, camTarget.position.y, 0);
