@@ -143,7 +143,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.45, y: 2.5}
+  m_Size: {x: 3.5, y: 2.55}
   m_EdgeRadius: 0
 --- !u!114 &4908127660040117374
 MonoBehaviour:
@@ -162,10 +162,15 @@ MonoBehaviour:
   firerate: 1
   firingPoint: {fileID: 304961962514888666}
   bulletSpread: 10
-  hP: 3
+  hP: 1
   isLoaded: 0
   isAimed: 0
   aimThreshold: 1.25
+  distanceThreshold: 17.5
+  randomModifier: 1
+  defaultSteerSpeed: 25
+  rayRange: 5
+  up: 0
 --- !u!50 &4023312610058401595
 Rigidbody2D:
   serializedVersion: 4
@@ -183,7 +188,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
