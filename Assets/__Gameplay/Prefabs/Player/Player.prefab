@@ -197,6 +197,8 @@ MonoBehaviour:
   min: {fileID: 0}
   bulletShakeStrength: 7.5
   bulletShakeLength: 0.125
+  shiftShakeStrength: 10
+  shiftShakeLength: 0.25
   canShift: 1
   is2003: 0
   cooldown: 0.25

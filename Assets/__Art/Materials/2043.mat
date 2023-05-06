@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sprite Transition
+  m_Name: 2043
   m_Shader: {fileID: -6465566751694194690, guid: c37e5adead2e3304bb3e269d3cc669a9, type: 3}
   m_ValidKeywords:
   - _NOISE_TYPE_GRADIENT
@@ -73,7 +73,7 @@ Material:
     - _Pixelation: 256
     - _RippleSpeed: 1
     - _Ripple_Count: 3.76
-    - _Size: 9.938318e-13
+    - _Size: 0
     - _Size_Multiplier: 0
     - _Strength: 1.5
     - _Timer: 0.623
@@ -86,7 +86,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _Offset: {r: -0.5, g: -0.5, b: 0, a: 0}
-    - _Position: {r: -38.427284, g: 0.75059974, b: 0, a: 0}
+    - _Position: {r: 0, g: 0, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _Smoothstep: {r: 0, g: 1, b: 0, a: 0}
     - _Speed: {r: 0, g: -1, b: 0, a: 0}

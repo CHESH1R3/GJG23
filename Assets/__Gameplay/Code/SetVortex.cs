@@ -21,12 +21,12 @@ public class SetVortex : MonoBehaviour
         if (is2003)
         {
             if (vortexPixelation != 1) vortexPixelation = 1;
-            if (vortexSize != 125) vortexSize = Mathf.Lerp(vortexSize, 125, transitionSpeed * Time.deltaTime);
+            if (vortexSize != 250) vortexSize = Mathf.Lerp(vortexSize, 250, transitionSpeed * Time.deltaTime);
         }
         else
         {
             if (vortexPixelation != 256) vortexPixelation = 256;
-            if (vortexSize != 0) vortexSize = Mathf.Lerp(vortexSize, 0, transitionSpeed * Time.deltaTime);
+            if (vortexSize != 0) vortexSize = Mathf.Lerp(vortexSize, 0, transitionSpeed * 2 * Time.deltaTime);
         }
 
         vortexMaterial.SetFloat("_Size", vortexSize);

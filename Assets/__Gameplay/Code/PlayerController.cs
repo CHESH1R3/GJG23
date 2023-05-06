@@ -19,8 +19,11 @@ public class PlayerController : ShootingDriver
     public Transform max, min; // ფლეერი კედლების იქით რომ არ გავიდეს ტრანსფორმი შევადაროთ. კოლაიდერზე უფრო ოპტიმალურია, ნაკლებ ფიზიკაზე ვინერვიულებთ
 
     [Header("Screen Shake")]
-    public float bulletShakeStrength = 10f;   // გასროლაზე სქრინ შეიქის რაოდენობა
+    public float bulletShakeStrength = 7.5f;   // გასროლაზე სქრინ შეიქის ძალა
     public float bulletShakeLength = 0.25f;   // გასროლაზე სქრინ შეიქის სიხანგრძლივე
+
+    public float shiftShakeStrength = 5f; // დროში ნახტომზე შეიქის ძალა
+    public float shiftShakeLength = 0.5f; // დროში ნახტომზე შეიქის სიზანგრძლივე
 
     [Header("Shift")]
     public bool canShift = true;    // შეუძლია თუ არა დროში გადახტეს
@@ -37,6 +40,8 @@ public class PlayerController : ShootingDriver
     public CinemachineVirtualCamera cinemachineVC;   // ცინემაშინის კამერა სქრინ შეიქისთვის
     float shakeTime = 0;
 
+    SetVortex vortexController;
+
     private void Start()
     {
         // თავიდანვე 2043ში რომ დაიყოს თამაში
@@ -44,7 +49,10 @@ public class PlayerController : ShootingDriver
         t2043.SetActive(true);
         t2003.SetActive(false);
 
+        vortexController = FindObjectOfType<SetVortex>();
+
         is2003 = false;
+        vortexController.is2003 = is2003;
     }
 
     private void Update()
@@ -147,6 +155,10 @@ public class PlayerController : ShootingDriver
         if (is2003) { t2043.SetActive(true); t2003.SetActive(false);  is2003 = false; }
         else { t2043.SetActive(false); t2003.SetActive(true);   is2003 = true; }
 
+        vortexController.is2003 = is2003;
+
+        CameraShake(shiftShakeStrength, shiftShakeLength);
+
         // ნახტომის ქულდაუნზე გაშვება
         StartCoroutine(ShiftCooldown());
     }
@@ -211,6 +223,6 @@ public class PlayerController : ShootingDriver
     {
         // აქ იქნება სიკვდილის და რესტარტის ფუნქცია. ამჯერად უბრალოდ სცენა დარესეტდება
 
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
