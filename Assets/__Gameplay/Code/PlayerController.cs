@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using Unity.Mathematics;
 
 public class PlayerController : ShootingDriver
 {
@@ -11,6 +13,7 @@ public class PlayerController : ShootingDriver
     [Header("Movement")]
     public float automaticSpeed = 20f; // ავტომატური წინსვლის სისწრაფე
     public float steeringSpeed = 10f; // მოხვევის სისწრაფე
+    public float steeringAngle = 20f; // მოხვევის კუთხე
     public float steeringAcceleration = 7.5f;  // რამდენად მალე რაზგონდება მოსახვევად
     public float drivingSpeed = 10f; // ხელით წინსვლის სისწრაფე
     public float drivingAcceleration = 5f;  // რამდენად მალე რაზგონდება საწინსვლოდ
@@ -119,11 +122,34 @@ public class PlayerController : ShootingDriver
         {
             // თუ ზედა კედელს არ ეხება, ზემოთ შეუძლია მოხვევა
             if (transform.position.y <= max.position.y) transform.position += transform.up * activeSteerSpeed * steeringSpeed * Time.deltaTime;
+
+
+            if (verticalInput != 0)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation,
+                Quaternion.Euler(transform.rotation.x, transform.rotation.y, steeringAngle), 0.3f);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation,
+                Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0), 0.3f);
+            }
         }
         else if (activeSteerSpeed < 0)
         {
             // თუ ქვედა კედელს არ ეხება, ქვემოთ შეუძლია მოხვევა
             if (transform.position.y >= min.position.y) transform.position += transform.up * activeSteerSpeed * steeringSpeed * Time.deltaTime;
+
+            if (verticalInput != 0)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation,
+                Quaternion.Euler(transform.rotation.x, transform.rotation.y, -steeringAngle), 0.3f);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation,
+                Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0), 0.3f);
+            }
         }
     }
 

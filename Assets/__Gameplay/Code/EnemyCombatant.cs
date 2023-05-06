@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EnemyCombatant : ShootingDriver
@@ -10,9 +11,28 @@ public class EnemyCombatant : ShootingDriver
     PlayerController playerController;
     Transform playerTransform;
 
+    RaycastHit2D upHitForward;
+    RaycastHit2D upHitBackward;
+
+    RaycastHit2D downHitForward;
+    RaycastHit2D downHitBackward;
+
+
+    RaycastHit2D leftHit;
+    RaycastHit2D rightHit;
+
+    public Transform raycastPointYForward;
+    public Transform raycastPointYBackward;
+
+    public Transform min;
+    public Transform max;
+
+
     public float aimThreshold = 1.75f; // საჭირო დისტანცია გასროლვამდე
 
     bool coolingDown;   // ქულდაუნი აქტიურია თუ არა
+    bool startSteering;   //  აქტიურია თუ არა
+    bool paralellEnemy;
     float fireCooldown = 0; // რა ფაზაზეა ქულდაუნი
 
     public float distanceThreshold = 17.5f;
@@ -36,7 +56,7 @@ public class EnemyCombatant : ShootingDriver
             if(!isAimed)
             {
                 // აქ უნდა შეიცვალოს პოზიცია რომ ფლეერს დაუმიზნოს
-                
+                startSteering = true;
             }
         }
 
@@ -45,6 +65,116 @@ public class EnemyCombatant : ShootingDriver
             Cooldown(); // სროლის ქულდაუნი
         }
     }
+
+
+    void SteerToPlayer()
+    {
+        if (!paralellEnemy)
+        {
+            transform.position = Vector2.Lerp(transform.position,
+            new Vector2(transform.position.x, playerTransform.position.y), 0.05f);
+        }
+    }
+
+
+    void ObsticleAvoidance()
+    {
+        string obsticleLocation = "";
+
+        Vector2 distanceToBorders = new Vector2(max.position.y - transform.position.y, transform.position.y - min.position.y);
+
+        upHitForward = Physics2D.Raycast(raycastPointYForward.position, Vector2.up);
+        Debug.DrawRay(raycastPointYForward.position, Vector2.up, Color.green);
+
+        downHitForward = Physics2D.Raycast(raycastPointYForward.position, Vector2.down);
+        Debug.DrawRay(raycastPointYForward.position, Vector2.down, Color.red);
+
+
+        upHitBackward = Physics2D.Raycast(raycastPointYBackward.position, Vector2.up);
+        Debug.DrawRay(raycastPointYBackward.position, Vector2.up, Color.green);
+
+        downHitBackward = Physics2D.Raycast(raycastPointYBackward.position, Vector2.down);
+        Debug.DrawRay(raycastPointYBackward.position, Vector2.down, Color.red);
+
+
+        leftHit = Physics2D.Raycast(transform.position, Vector2.left, 5);
+        Debug.DrawRay(transform.position, Vector2.left, Color.blue);
+
+        rightHit = Physics2D.Raycast(transform.position, Vector2.right , 5);
+        Debug.DrawRay(transform.position, Vector2.right, Color.yellow);
+
+
+
+        if (upHitForward && upHitBackward && downHitForward && downHitBackward)
+        {
+            obsticleLocation = "upAndDown";
+        }
+        else if (upHitForward && upHitBackward)
+        {
+            obsticleLocation = "up";
+        }
+        else if (downHitForward && downHitBackward)
+        {
+            obsticleLocation = "down";
+        }
+        else if(!upHitForward && !upHitBackward && !downHitForward && !downHitBackward)
+        {
+            obsticleLocation = "none";
+        }
+
+        //print(obsticleLocation);
+
+        //print(distanceToBorders);
+
+
+
+        if (rightHit)
+        {
+            if (obsticleLocation == "up" && transform.position.y >= min.transform.position.y)
+            {
+                transform.Translate(0, -0.3f, 0);
+            }
+            else if (obsticleLocation == "down" && transform.position.y <= max.transform.position.y)
+            {
+                transform.Translate(0, 0.3f, 0);
+            }
+            else if (obsticleLocation == "none")
+            {
+                //if(distanceToBorders.x > distanceToBorders.y)
+                //{
+
+                //}
+
+                if (distanceToBorders.x > distanceToBorders.y)
+                {
+                    print("dabla");
+                    transform.Translate(0, 0.3f, 0);
+                }
+                else if (distanceToBorders.x < distanceToBorders.y)
+                {
+                    print("magla");
+                    transform.Translate(0, -0.3f, 0);
+                }
+            }
+        }
+
+
+
+
+
+
+
+        // მოწმდება ჰორიზონტალურად გეიმობჯექტის პარალელურად სხვა გეიმობჯექტი დგას თუ არა და შესაბამისად ისეტება ბულეან ცვლადი
+        if (upHitForward || downHitForward || upHitBackward || downHitBackward )
+        {
+            paralellEnemy = true;
+        }
+        else
+        {
+            paralellEnemy = false;
+        }
+    }
+
    
     void CheckAim()
     {
@@ -68,6 +198,14 @@ public class EnemyCombatant : ShootingDriver
                 }
             }
         }
+
+        if(startSteering)
+        {
+            SteerToPlayer();
+        }
+        ObsticleAvoidance();
+
+
     }
 
     void Shoot()
