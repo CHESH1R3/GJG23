@@ -4,8 +4,11 @@ public class SetRipple : MonoBehaviour
 {
     public Material rippleMaterial;
 
+    public float rippleCount;
     public float rippleSpeed;
-    public float stopSpeed;
+    public float rippleStrength;
+
+    public float rippleMax;
 
     public float rippleThreshold;
 
@@ -18,22 +21,20 @@ public class SetRipple : MonoBehaviour
 
     void Transition()
     {
-        float vortexSize = rippleMaterial.GetFloat("_Size");
-        float vortexPixelation = rippleMaterial.GetFloat("_Pixelation");
+        float rippleCount = rippleMaterial.GetFloat("_Ripple Count");
+        float rippleSpeed = rippleMaterial.GetFloat("_Ripple Speed");
 
-        if (is2003)
+        if (!is2003)
         {
-            if (vortexPixelation != 1) vortexPixelation = 1;
-            if (vortexSize != 250) vortexSize = Mathf.Lerp(vortexSize, 250, rippleSpeed * Time.deltaTime);
+            if (rippleCount != rippleMax) rippleCount = Mathf.Lerp(rippleCount, rippleMax, this.rippleCount * Time.deltaTime);
         }
         else
         {
-            if (vortexPixelation != 256) vortexPixelation = 256;
-            if (vortexSize != 0) vortexSize = Mathf.Lerp(vortexSize, 0, rippleSpeed * 2 * Time.deltaTime);
+            if (rippleCount != 0) rippleCount = Mathf.Lerp(rippleCount, 0, this.rippleCount * 2 * Time.deltaTime);
         }
 
-        rippleMaterial.SetFloat("_Size", vortexSize);
-        rippleMaterial.SetFloat("_Pixelation", vortexPixelation);
+        rippleMaterial.SetFloat("_Size", rippleCount);
+        rippleMaterial.SetFloat("_Pixelation", rippleSpeed);
         rippleMaterial.SetVector("_Position", new Vector2(-transform.position.x, -transform.position.y));
     }
 }
