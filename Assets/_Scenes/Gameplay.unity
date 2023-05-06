@@ -165,14 +165,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8148cb6f1f79eee419b335865f16ef16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &903264254 stripped
+--- !u!4 &925854736 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 903264254, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
+  m_CorrespondingSourceObject: {fileID: 925854736, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
+  m_PrefabInstance: {fileID: 6455199453529151839}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1147154691 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1147154691, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
   m_PrefabInstance: {fileID: 6455199453529151839}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1678415069 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6455199453999271298, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
+  m_PrefabInstance: {fileID: 6455199453529151839}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1738563667 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1738563667, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
   m_PrefabInstance: {fileID: 6455199453529151839}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1788806072 stripped
@@ -183,11 +193,6 @@ Transform:
 --- !u!1 &2047018316 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6455199454233730067, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-  m_PrefabInstance: {fileID: 6455199453529151839}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2129647767 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2129647767, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
   m_PrefabInstance: {fileID: 6455199453529151839}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3438953016605912480
@@ -423,11 +428,11 @@ PrefabInstance:
     - target: {fileID: 7492020052235884555, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
       propertyPath: max
       value: 
-      objectReference: {fileID: 2129647767}
+      objectReference: {fileID: 925854736}
     - target: {fileID: 7492020052235884555, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
       propertyPath: min
       value: 
-      objectReference: {fileID: 903264254}
+      objectReference: {fileID: 1738563667}
     - target: {fileID: 7492020052235884555, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
       propertyPath: t2003
       value: 
@@ -440,5 +445,9 @@ PrefabInstance:
       propertyPath: camTarget
       value: 
       objectReference: {fileID: 1788806072}
+    - target: {fileID: 7492020052235884555, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
+      propertyPath: boundTransform
+      value: 
+      objectReference: {fileID: 1147154691}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}

@@ -11,11 +11,10 @@ public class PlayerController : MonoBehaviour
     public float automaticSpeed = 20f; // ავტომატური წინსვლის სისწრაფე
     public float steeringSpeed = 10f; // მოხვევის სისწრაფე
     public float steeringAcceleration = 7.5f;  // რამდენად მალე რაზგონდება მოსახვევად
-    public float drivingSpeed = 5f; // ხელით წინსვლის სისწრაფე
-    public float drivingAcceleration = 7.5f;  // რამდენად მალე რაზგონდება საწინსვლოდ
+    public float drivingSpeed = 10f; // ხელით წინსვლის სისწრაფე
+    public float drivingAcceleration = 5f;  // რამდენად მალე რაზგონდება საწინსვლოდ
 
-
-
+    public Transform boundTransform; // ბაუნდების ფარენთი
     public Transform max, min; // ფლეერი კედლების იქით რომ არ გავიდეს ტრანსფორმი შევადაროთ. კოლაიდერზე უფრო ოპტიმალურია, ნაკლებ ფიზიკაზე ვინერვიულებთ
 
     [Header("Combat")]
@@ -29,9 +28,9 @@ public class PlayerController : MonoBehaviour
 
     public GameObject t2003, t2043;
 
-    float verticalInput;    // ინპუტი რომ შევინახოთ ფლეერის
+    float verticalInput, horizontalInput;    // ინპუტი რომ შევინახოთ ფლეერის
     public bool shiftInput = false; // ფლეერის ნახტომის ინპუტი
-    float activeSteerSpeed; // ამ კონკრეტულ მომენტში აქსელერაცია სადამდეა მისული
+    float activeSteerSpeed, activeDriveSpeed; // ამ კონკრეტულ მომენტში აქსელერაცია სადამდეა მისული
 
     private void Start()
     {
@@ -51,6 +50,7 @@ public class PlayerController : MonoBehaviour
     void GetPlayerInput()
     {
         verticalInput = Input.GetAxisRaw("Vertical");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
 
         // დროში ნახტომის ინპუტის აღება
         if (Input.GetMouseButtonDown(1))
@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Steer();
+        Drive();
 
         if (shiftInput)
         {
@@ -75,8 +76,10 @@ public class PlayerController : MonoBehaviour
     {
         transform.position += transform.right * automaticSpeed * Time.deltaTime; // წინსვლა
 
-        // კამერა თარგეთის დააფდეითება
-        camTarget.position = new Vector3(transform.position.x, camTarget.position.y, 0);
+
+        boundTransform.position += boundTransform.right * automaticSpeed * Time.deltaTime; // ბაუნდების წინსვლა
+
+        camTarget.position += camTarget.right * automaticSpeed * Time.deltaTime; // კამერა თარგეთის დააფდეითება
     }
 
     void Steer()
@@ -95,6 +98,25 @@ public class PlayerController : MonoBehaviour
         {
             // თუ ქვედა კედელს არ ეხება, ქვემოთ შეუძლია მოხვევა
             if (transform.position.y >= min.position.y) transform.position += transform.up * activeSteerSpeed * steeringSpeed * Time.deltaTime;
+        }
+    }
+
+    void Drive()
+    {
+        // წინსვლის დათვლა. თუ ინპუტი არ შემოდის ვასწრაფებთ. საპირისპირო შემთხვევაში ძალიან სრიალებს
+        if (horizontalInput == 0) activeDriveSpeed = Mathf.Lerp(activeDriveSpeed, horizontalInput, drivingAcceleration * 1.5f * Time.deltaTime);
+        else activeDriveSpeed = Mathf.Lerp(activeDriveSpeed, horizontalInput, drivingAcceleration * Time.deltaTime);
+
+        // მოხვევა
+        if (activeDriveSpeed > 0)
+        {
+            // თუ ზედა კედელს არ ეხება, ზემოთ შეუძლია მოხვევა
+            if (transform.position.x <= max.position.x) transform.position += transform.right * activeDriveSpeed * drivingSpeed * Time.deltaTime;
+        }
+        else if (activeDriveSpeed < 0)
+        {
+            // თუ ქვედა კედელს არ ეხება, ქვემოთ შეუძლია მოხვევა
+            if (transform.position.x >= min.position.x) transform.position += transform.right * activeDriveSpeed * drivingSpeed * Time.deltaTime;
         }
     }
 

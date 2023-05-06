@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        playerTransform = playerController.transform;
+        playerTransform = playerController.camTarget;
 
         speed = playerController.automaticSpeed;
     }
