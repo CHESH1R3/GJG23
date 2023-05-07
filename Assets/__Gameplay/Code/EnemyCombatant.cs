@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -76,6 +77,19 @@ public class EnemyCombatant : ShootingDriver
         }
     }
 
+    bool goup;
+    bool godown;
+
+    bool preventSteering;
+
+
+
+    IEnumerator WaitBeforeStart()
+    {
+        yield return new WaitForSeconds(0.5f);
+        preventSteering = false;
+    }
+
 
     void ObsticleAvoidance()
     {
@@ -124,7 +138,7 @@ public class EnemyCombatant : ShootingDriver
 
         //print(obsticleLocation);
 
-        print(Mathf.Abs(distanceToBorders.x - distanceToBorders.y));
+        //print(Mathf.Abs(distanceToBorders.x - distanceToBorders.y));
 
 
 
@@ -155,19 +169,39 @@ public class EnemyCombatant : ShootingDriver
                 //    }
                 //}
 
-
-                if (distanceToBorders.x > distanceToBorders.y)
+                if(goup && transform.position.y <= max.transform.position.y)
                 {
-                    print("dabla");
                     transform.Translate(0, 0.3f, 0);
                 }
-                else if (distanceToBorders.x < distanceToBorders.y)
+                else if (godown && transform.position.y >= min.transform.position.y)
                 {
-                    print("magla");
                     transform.Translate(0, -0.3f, 0);
                 }
 
+
+                if (distanceToBorders.x > distanceToBorders.y && !goup && !godown)
+                {
+                    print("magla");
+                    goup = true;
+                    preventSteering = true;
+                    StartCoroutine(WaitBeforeStart());
+                    //transform.Translate(0, 0.3f, 0);
+                }
+                else if (distanceToBorders.x < distanceToBorders.y && !godown && !goup)
+                {
+                    print("dabla");
+                    godown = true;
+                    preventSteering = true;
+                    StartCoroutine(WaitBeforeStart());
+                    //transform.Translate(0, -0.3f, 0);
+                }
+
             }
+        }
+        else
+        {
+            godown = false;
+            goup = false;
         }
 
 
@@ -211,7 +245,7 @@ public class EnemyCombatant : ShootingDriver
             }
         }
 
-        if(startSteering)
+        if(startSteering && !preventSteering && !goup || !godown)
         {
             SteerToPlayer();
         }
