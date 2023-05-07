@@ -70,10 +70,10 @@ Material:
     - _MP: 0.79
     - _NOISE_TYPE: 1
     - _Noise_Scale: 1
-    - _Pixelation: 1
+    - _Pixelation: 256
     - _RippleSpeed: 1
     - _Ripple_Count: 3.76
-    - _Size: 0.022336787
+    - _Size: 0
     - _Size_Multiplier: 0
     - _Strength: 1.5
     - _Timer: 0.623
@@ -86,7 +86,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _Offset: {r: -0.5, g: -0.5, b: 0, a: 0}
-    - _Position: {r: -16, g: 2.68, b: 0, a: 0}
+    - _Position: {r: -530, g: -0.74168587, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _Smoothstep: {r: 0, g: 1, b: 0, a: 0}
     - _Speed: {r: 0, g: -1, b: 0, a: 0}

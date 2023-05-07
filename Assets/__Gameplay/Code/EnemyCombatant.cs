@@ -118,10 +118,10 @@ public class EnemyCombatant : ShootingDriver
         //leftHit = Physics2D.Raycast(transform.position, Vector2.left, 5);
         //Debug.DrawRay(transform.position, Vector2.left, Color.blue);
 
-        rightHitUp = Physics2D.Raycast(raycastPointXUp.position, Vector2.right , 7);
+        rightHitUp = Physics2D.Raycast(raycastPointXUp.position, Vector2.right , 8);
         Debug.DrawRay(raycastPointXUp.position, Vector2.right, Color.blue);
 
-        rightHitDown = Physics2D.Raycast(raycastPointXDown.position, Vector2.right, 7);
+        rightHitDown = Physics2D.Raycast(raycastPointXDown.position, Vector2.right, 8);
         Debug.DrawRay(raycastPointXDown.position, Vector2.right, Color.yellow);
 
 
