@@ -45,6 +45,7 @@ public class PlayerController : ShootingDriver
     float shakeTime = 0;
 
     SetVortex vortexController;
+    Animator rippleController;
 
     private void Start()
     {
@@ -54,7 +55,7 @@ public class PlayerController : ShootingDriver
         t2003.SetActive(false);
 
         vortexController = FindObjectOfType<SetVortex>();
-
+        rippleController = FindObjectOfType<SetRipple>().GetComponent<Animator>();
         is2003 = false;
         vortexController.is2003 = is2003;
     }
@@ -106,9 +107,7 @@ public class PlayerController : ShootingDriver
     {
         transform.position += transform.right * automaticSpeed * Time.deltaTime; // წინსვლა
 
-
         boundTransform.position += boundTransform.right * automaticSpeed * Time.deltaTime; // ბაუნდების წინსვლა
-
         camTarget.position += camTarget.right * automaticSpeed * Time.deltaTime; // კამერა თარგეთის დააფდეითება
     }
 
@@ -183,6 +182,7 @@ public class PlayerController : ShootingDriver
         else { t2043.SetActive(false); t2003.SetActive(true);   is2003 = true; }
 
         vortexController.is2003 = is2003;
+        rippleController.Play("Ripple");
 
         CameraShake(shiftShakeStrength, shiftShakeLength);
 

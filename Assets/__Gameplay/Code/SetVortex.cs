@@ -13,7 +13,7 @@ public class SetVortex : MonoBehaviour
         Transition();
     }
 
-    void Transition()
+    void Transition()   
     {
         float vortexSize = vortexMaterial.GetFloat("_Size");
         float vortexPixelation = vortexMaterial.GetFloat("_Pixelation");
@@ -26,13 +26,11 @@ public class SetVortex : MonoBehaviour
         else
         {
             if (vortexPixelation != 256) vortexPixelation = 256;
-            if (vortexSize != 0) vortexSize = Mathf.Lerp(vortexSize, 0, transitionSpeed * 2 * Time.deltaTime);
+            if (vortexSize != 0) vortexSize = Mathf.Lerp(vortexSize, 0, transitionSpeed * 3 * Time.deltaTime);
         }
 
         vortexMaterial.SetFloat("_Size", vortexSize);
         vortexMaterial.SetFloat("_Pixelation", vortexPixelation);
         vortexMaterial.SetVector("_Position", new Vector2(-transform.position.x, -transform.position.y));
     }
-
-
 }

@@ -8,37 +8,17 @@ public class SetRipple : MonoBehaviour
     public float rippleSpeed;
     public float rippleStrength;
 
-    public float rippleCountMax;
-    public float rippleStrengthMax;
-
-    public float rippleCountThreshold;
-    public float rippleMaxThreshold;
-
-    public bool is2003;
-
     private void Update()
     {
-        Transition();
+        Sync();
     }
 
-    void Transition()
+    void Sync()
     {
-        float matRippleCount = rippleMaterial.GetFloat("_Ripple_Count");
-        float matRippleSpeed = rippleMaterial.GetFloat("_Ripple_Speed");
+        rippleMaterial.SetFloat("_Ripple_Count", rippleCount);
+        rippleMaterial.SetFloat("_Ripple_Speed", rippleSpeed);
+        rippleMaterial.SetFloat("_Ripple_Strength", rippleStrength);
 
-        if (!is2003)
-        {
-            if (matRippleCount != rippleCountMax) matRippleCount = Mathf.Lerp(matRippleCount, rippleCountMax, rippleCount * Time.deltaTime);
-            if (matRippleCount + rippleCountThreshold >= rippleCountMax)
-            {
-                if (matRippleCount != 0) matRippleCount = Mathf.Lerp(matRippleCount, 0, rippleCount * Time.deltaTime);
-            }
-        }
-        else
-        {
-        }
-
-        rippleMaterial.SetFloat("_Ripple_Count", matRippleCount);
-        rippleMaterial.SetFloat("_Ripple_Speed", matRippleSpeed);
+        rippleMaterial.SetVector("_Ripple_Center", new Vector2(transform.position.x, transform.position.y));
     }
 }

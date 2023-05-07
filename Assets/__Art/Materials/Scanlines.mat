@@ -56,7 +56,7 @@ Material:
     m_Floats:
     - Boolean_4b961c4ada6e43bc94be045f3c543894: 0
     - Vector1_276010af9a3f47889123f15c9a592f80: 3
-    - Vector1_37BECE45: 0.125
+    - Vector1_37BECE45: 0
     - Vector1_90AD79C5: 12
     - _EnableExternalAlpha: 0
     - _QueueControl: 0
