@@ -262,13 +262,13 @@ public class PlayerController : ShootingDriver
             hP--;
             if (hP == 0)
             {
-                EnemyController.GameOver.SetActive(true);
+                //EnemyController.GameOver.SetActive(true);
                 DestroyCombatant();
             }
         }
         else if (other.tag == "Obstacle")
         {
-            EnemyController.GameOver.SetActive(true);
+            //EnemyController.GameOver.SetActive(true);
             DestroyCombatant();
         }
     }
