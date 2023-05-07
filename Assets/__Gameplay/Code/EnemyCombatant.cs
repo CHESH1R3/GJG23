@@ -20,10 +20,14 @@ public class EnemyCombatant : ShootingDriver
 
 
     RaycastHit2D leftHit;
-    RaycastHit2D rightHit;
+    RaycastHit2D rightHitUp;
+    RaycastHit2D rightHitDown;
 
     public Transform raycastPointYForward;
     public Transform raycastPointYBackward;
+
+    public Transform raycastPointXUp;
+    public Transform raycastPointXDown;
 
     public Transform min;
     public Transform max;
@@ -80,13 +84,13 @@ public class EnemyCombatant : ShootingDriver
     bool goup;
     bool godown;
 
-    bool preventSteering;
+    bool preventSteering = false;
 
 
 
     IEnumerator WaitBeforeStart()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         preventSteering = false;
     }
 
@@ -111,11 +115,14 @@ public class EnemyCombatant : ShootingDriver
         Debug.DrawRay(raycastPointYBackward.position, Vector2.down, Color.red);
 
 
-        leftHit = Physics2D.Raycast(transform.position, Vector2.left, 5);
-        Debug.DrawRay(transform.position, Vector2.left, Color.blue);
+        //leftHit = Physics2D.Raycast(transform.position, Vector2.left, 5);
+        //Debug.DrawRay(transform.position, Vector2.left, Color.blue);
 
-        rightHit = Physics2D.Raycast(transform.position, Vector2.right , 5);
-        Debug.DrawRay(transform.position, Vector2.right, Color.yellow);
+        rightHitUp = Physics2D.Raycast(raycastPointXUp.position, Vector2.right , 7);
+        Debug.DrawRay(raycastPointXUp.position, Vector2.right, Color.blue);
+
+        rightHitDown = Physics2D.Raycast(raycastPointXDown.position, Vector2.right, 7);
+        Debug.DrawRay(raycastPointXDown.position, Vector2.right, Color.yellow);
 
 
 
@@ -142,40 +149,27 @@ public class EnemyCombatant : ShootingDriver
 
 
 
-        if (rightHit)
+        if (rightHitUp || rightHitDown)
         {
             if (obsticleLocation == "up" && transform.position.y >= min.transform.position.y)
             {
-                transform.Translate(0, -0.3f, 0);
+                transform.Translate(0, -0.8f, 0);
             }
             else if (obsticleLocation == "down" && transform.position.y <= max.transform.position.y)
             {
-                transform.Translate(0, 0.3f, 0);
+                transform.Translate(0, 0.8f, 0);
             }
             else if (obsticleLocation == "none")
             {
 
-                //if (Mathf.Abs(distanceToBorders.x - distanceToBorders.y) <= 2.28)
-                //{
-                //    print("shushi");
-
-                //    if (Random.Range(0,2) == 1)
-                //    {
-                //        transform.Translate(0, 0.3f, 0);
-                //    }
-                //    else
-                //    {
-                //        transform.Translate(0, -0.3f, 0);
-                //    }
-                //}
 
                 if(goup && transform.position.y <= max.transform.position.y)
                 {
-                    transform.Translate(0, 0.3f, 0);
+                    transform.Translate(0, 0.8f, 0);
                 }
                 else if (godown && transform.position.y >= min.transform.position.y)
                 {
-                    transform.Translate(0, -0.3f, 0);
+                    transform.Translate(0, -0.8f, 0);
                 }
 
 
@@ -185,7 +179,6 @@ public class EnemyCombatant : ShootingDriver
                     goup = true;
                     preventSteering = true;
                     StartCoroutine(WaitBeforeStart());
-                    //transform.Translate(0, 0.3f, 0);
                 }
                 else if (distanceToBorders.x < distanceToBorders.y && !godown && !goup)
                 {
@@ -193,7 +186,6 @@ public class EnemyCombatant : ShootingDriver
                     godown = true;
                     preventSteering = true;
                     StartCoroutine(WaitBeforeStart());
-                    //transform.Translate(0, -0.3f, 0);
                 }
 
             }
@@ -206,10 +198,6 @@ public class EnemyCombatant : ShootingDriver
 
 
 
-
-
-
-
         // მოწმდება ჰორიზონტალურად გეიმობჯექტის პარალელურად სხვა გეიმობჯექტი დგას თუ არა და შესაბამისად ისეტება ბულეან ცვლადი
         if (upHitForward || downHitForward || upHitBackward || downHitBackward )
         {
@@ -219,6 +207,8 @@ public class EnemyCombatant : ShootingDriver
         {
             paralellEnemy = false;
         }
+
+
     }
 
    
@@ -245,10 +235,13 @@ public class EnemyCombatant : ShootingDriver
             }
         }
 
-        if(startSteering && !preventSteering && !goup || !godown)
+        if(startSteering && !preventSteering && !goup || startSteering && !preventSteering && !godown)
         {
             SteerToPlayer();
+
+            //print("here");
         }
+        //print(preventSteering);
         ObsticleAvoidance();
 
 
