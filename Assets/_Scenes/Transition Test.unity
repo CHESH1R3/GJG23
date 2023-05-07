@@ -186,6 +186,22 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 7972084233781977213, guid: 31cf2ddce1ba3f14bae27cc99bb8ea14, type: 2}
+    - target: {fileID: 6490003174853767762, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
+      propertyPath: m_Pitch
+      value: 1.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6490003174853767762, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933933844942947283, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
+      propertyPath: m_Pitch
+      value: 1.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933933844942947283, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7492020052235884553, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -291,7 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   enemyObjects: []
-  GameOver: {fileID: 0}
+  distanceThreshold: 0
 --- !u!4 &1738563667 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1738563667, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
