@@ -1295,10 +1295,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Timelines
       objectReference: {fileID: 0}
-    - target: {fileID: 6455199454233730067, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
 --- !u!1001 &6716644542393948539

@@ -34,6 +34,9 @@ public class PlayerController : ShootingDriver
     public bool is2003 = false; // დროის შემოწმების ბულიანი
     public float cooldown = 0.25f;  // რამდენი დრო ჭირდება რომ დრო დაშიფტოს
 
+    SpriteRenderer characterRenderer;
+    public Sprite sprite2003, sprite2043;
+
     public GameObject t2003, t2043;
 
     float verticalInput, horizontalInput;    // ინპუტი რომ შევინახოთ ფლეერის
@@ -44,6 +47,7 @@ public class PlayerController : ShootingDriver
     public CinemachineVirtualCamera cinemachineVC;   // ცინემაშინის კამერა სქრინ შეიქისთვის
     float shakeTime = 0;
 
+    MusicManager musicManager;
     SetVortex vortexController;
     Animator rippleController;
 
@@ -54,9 +58,14 @@ public class PlayerController : ShootingDriver
         t2043.SetActive(true);
         t2003.SetActive(false);
 
+        musicManager = FindObjectOfType<MusicManager>();
         vortexController = FindObjectOfType<SetVortex>();
         rippleController = FindObjectOfType<SetRipple>().GetComponent<Animator>();
+
+        characterRenderer = GetComponentInChildren<SpriteRenderer>();
+
         is2003 = false;
+        musicManager.is2003 = is2003;
         vortexController.is2003 = is2003;
     }
 
@@ -143,12 +152,12 @@ public class PlayerController : ShootingDriver
             if (verticalInput != 0)
             {
                 spriteTransform.rotation = Quaternion.Lerp(spriteTransform.rotation,
-                Quaternion.Euler(spriteTransform.rotation.x, spriteTransform.rotation.y, -steeringAngle), 0.3f);
+                Quaternion.Euler(spriteTransform.rotation.x, spriteTransform.rotation.y, -steeringAngle), 0.125f);
             }
             else
             {
                 spriteTransform.rotation = Quaternion.Lerp(spriteTransform.rotation,
-                Quaternion.Euler(spriteTransform.rotation.x, spriteTransform.rotation.y, 0), 0.3f);
+                Quaternion.Euler(spriteTransform.rotation.x, spriteTransform.rotation.y, 0), 0.125f);
             }
         }
     }
@@ -178,9 +187,10 @@ public class PlayerController : ShootingDriver
     {
         canShift = false;
 
-        if (is2003) { t2043.SetActive(true); t2003.SetActive(false);  is2003 = false; }
-        else { t2043.SetActive(false); t2003.SetActive(true);   is2003 = true; }
+        if (is2003) { t2043.SetActive(true); t2003.SetActive(false);  is2003 = false; characterRenderer.sprite = sprite2043; }
+        else { t2043.SetActive(false); t2003.SetActive(true);   is2003 = true; characterRenderer.sprite = sprite2003; }
 
+        musicManager.is2003 = is2003;
         vortexController.is2003 = is2003;
         rippleController.Play("Ripple");
 
@@ -199,7 +209,10 @@ public class PlayerController : ShootingDriver
         // ტყვიის შექმნა და ტრანსფორმის ამოღება
         Transform newBullet = Instantiate(bulletPrefab, firingPoint.position, firingPoint.rotation).transform;
         // ტყვიაზე ცოტა სპრედის დადება
-        newBullet.eulerAngles = new Vector3(newBullet.rotation.x, newBullet.rotation.y, Random.Range(-bulletSpread, bulletSpread));
+
+        newBullet.eulerAngles += new Vector3(0, 0, firingPoint.transform.parent.rotation.z);
+
+        newBullet.eulerAngles += new Vector3(0, 0, Random.Range(-bulletSpread, bulletSpread) + firingPoint.parent.rotation.z);
 
         CameraShake(bulletShakeStrength, bulletShakeLength);
 

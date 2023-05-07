@@ -453,9 +453,14 @@ PrefabInstance:
     - {fileID: 1180496003621811375, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
     - {fileID: 2265975360614760046, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
---- !u!1 &124961900 stripped
+--- !u!1 &76001294 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6455199453682054553, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6455199453999271298, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
+  m_PrefabInstance: {fileID: 76001293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &76001295 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6455199454233730067, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
   m_PrefabInstance: {fileID: 76001293}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &132661341
@@ -1100,11 +1105,6 @@ Transform:
   m_Father: {fileID: 1422135671}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &458260340 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8150137122048013828, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
-  m_PrefabInstance: {fileID: 7492020052847628774}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &510116815 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1738563667, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
@@ -2686,11 +2686,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3903881131155274125, guid: 7685bb9889f87b641bd8eae77c4efd88, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7685bb9889f87b641bd8eae77c4efd88, type: 3}
---- !u!1 &1898057559 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6455199452864517714, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-  m_PrefabInstance: {fileID: 76001293}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1975619666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2797198236158735171, guid: 7685bb9889f87b641bd8eae77c4efd88, type: 3}
@@ -2900,47 +2895,23 @@ PrefabInstance:
     - target: {fileID: 7492020052235884555, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
       propertyPath: t2003
       value: 
-      objectReference: {fileID: 124961900}
+      objectReference: {fileID: 76001295}
     - target: {fileID: 7492020052235884555, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
       propertyPath: t2043
       value: 
-      objectReference: {fileID: 1898057559}
-    - target: {fileID: 7492020052235884555, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
-      propertyPath: firerate
-      value: 0.125
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 76001294}
     - target: {fileID: 7492020052235884555, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
       propertyPath: camTarget
       value: 
       objectReference: {fileID: 1788806072}
     - target: {fileID: 7492020052235884555, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
-      propertyPath: drivingSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7492020052235884555, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
       propertyPath: cinemachineVC
       value: 
       objectReference: {fileID: 2060013600}
     - target: {fileID: 7492020052235884555, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
-      propertyPath: steeringSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7492020052235884555, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
-      propertyPath: automaticSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7492020052235884555, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
       propertyPath: boundTransform
       value: 
       objectReference: {fileID: 46239358}
-    - target: {fileID: 7492020052235884555, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
-      propertyPath: spriteTransform
-      value: 
-      objectReference: {fileID: 458260340}
-    - target: {fileID: 7492020052235884555, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
-      propertyPath: bulletShakeStrength
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 7492020052235884566, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
       propertyPath: m_Enabled
       value: 0
