@@ -19,14 +19,15 @@ public class EnemyCombatant : ShootingDriver
     RaycastHit2D downHitBackward;
 
 
-    RaycastHit2D leftHit;
     RaycastHit2D rightHitUp;
+    RaycastHit2D rightHitMiddle;
     RaycastHit2D rightHitDown;
 
     public Transform raycastPointYForward;
     public Transform raycastPointYBackward;
 
     public Transform raycastPointXUp;
+    public Transform raycastPointXMiddle;
     public Transform raycastPointXDown;
 
     public Transform min;
@@ -121,8 +122,13 @@ public class EnemyCombatant : ShootingDriver
         rightHitUp = Physics2D.Raycast(raycastPointXUp.position, Vector2.right , 8);
         Debug.DrawRay(raycastPointXUp.position, Vector2.right, Color.blue);
 
+        rightHitMiddle = Physics2D.Raycast(raycastPointXMiddle.position, Vector2.right, 8);
+        Debug.DrawRay(raycastPointXMiddle.position, Vector2.right, Color.red);
+
         rightHitDown = Physics2D.Raycast(raycastPointXDown.position, Vector2.right, 8);
         Debug.DrawRay(raycastPointXDown.position, Vector2.right, Color.yellow);
+
+
 
 
 
@@ -149,7 +155,7 @@ public class EnemyCombatant : ShootingDriver
 
 
 
-        if (rightHitUp || rightHitDown)
+        if (rightHitUp || rightHitDown || rightHitMiddle)
         {
             if (obsticleLocation == "up" && transform.position.y >= min.transform.position.y)
             {
@@ -273,6 +279,7 @@ public class EnemyCombatant : ShootingDriver
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+ 
         if (other.tag == "PlayerBullet")
         {
             hP--;
@@ -281,7 +288,7 @@ public class EnemyCombatant : ShootingDriver
                 DestroyCombatant();
             }
         }
-        else if (other.tag == "Obstacle")
+        else if (other is CircleCollider2D && other.tag == "Obstacle")
         {
             DestroyCombatant();
         }
