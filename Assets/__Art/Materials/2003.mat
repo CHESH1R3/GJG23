@@ -90,7 +90,7 @@ Material:
     - _Offset: {r: -0.5, g: -0.5, b: 0, a: 0}
     - _Position: {r: -113.91551, g: -1.193836, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Ripple_Center: {r: 11, g: -1.5, b: 0, a: 0}
+    - _Ripple_Center: {r: 686.4719, g: -1.7164875, b: 0, a: 0}
     - _Smoothstep: {r: 0, g: 1, b: 0, a: 0}
     - _Speed: {r: 0, g: -1, b: 0, a: 0}
     - _Timer_Color: {r: 1, g: 1, b: 1, a: 0}

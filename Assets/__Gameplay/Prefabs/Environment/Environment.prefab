@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  parallaxEffect: 0
+  parallaxEffect: -0.25
 --- !u!1 &925854735
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  parallaxEffect: 0
+  parallaxEffect: 0.6666667
 --- !u!1 &1224533069730912464
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5737572365573403927}
   - component: {fileID: 60481903171868202}
+  - component: {fileID: 361933748}
   m_Layer: 0
   m_Name: Greenery
   m_TagString: Untagged
@@ -461,6 +462,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &361933748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224533069730912464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f17d2e57143ed640bf040b787ff31e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  parallaxEffect: 0.33333334
 --- !u!1 &1643819661898162902
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,9 +548,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: 1254a56867a24df44adc24e8973ac126, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2509804}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
@@ -644,7 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  parallaxEffect: 0
+  parallaxEffect: 0.75
 --- !u!1 &3507477056857574968
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,6 +670,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3037215171538337564}
   - component: {fileID: 1581759629061911368}
+  - component: {fileID: 79210972}
   m_Layer: 0
   m_Name: Cityscape
   m_TagString: Untagged
@@ -729,6 +745,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &79210972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3507477056857574968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f17d2e57143ed640bf040b787ff31e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  parallaxEffect: 0.5
 --- !u!1 &4670913833040787158
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,6 +837,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3651289529809091289}
   - component: {fileID: 1853160477497395224}
+  - component: {fileID: 60280950}
   m_Layer: 0
   m_Name: Asphalt
   m_TagString: Untagged
@@ -881,6 +912,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &60280950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5365753550131687893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f17d2e57143ed640bf040b787ff31e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  parallaxEffect: -0.25
 --- !u!1 &5630769115495376970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,7 +1079,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6455199452975003141}
-  - component: {fileID: 6455199452975003140}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -1062,21 +1106,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6455199452975003140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6455199452975003142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e202933e72d1a8e499a007302d23ed70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  enemyObjects:
-  - {fileID: 0}
 --- !u!1 &6455199453461634189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,7 +1177,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6455199453999271297}
-  - component: {fileID: 8888896401652375279}
   m_Layer: 0
   m_Name: Obstacles and Enemies 43
   m_TagString: Untagged
@@ -1173,20 +1201,6 @@ Transform:
   m_Father: {fileID: 4971197423432853429}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8888896401652375279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6455199453999271298}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e202933e72d1a8e499a007302d23ed70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  enemyObjects: []
 --- !u!1 &6455199454233730067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,6 +1244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7406482896252268671}
   - component: {fileID: 567133588268931717}
+  - component: {fileID: 1331969258}
   m_Layer: 0
   m_Name: Sky
   m_TagString: Untagged
@@ -1304,6 +1319,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1331969258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7242393777483396573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f17d2e57143ed640bf040b787ff31e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  parallaxEffect: 0.75
 --- !u!1 &7833955426112204742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,4 +1466,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  parallaxEffect: 0
+  parallaxEffect: 0.5

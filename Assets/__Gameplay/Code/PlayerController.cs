@@ -7,11 +7,6 @@ using Unity.Mathematics;
 
 public class PlayerController : ShootingDriver
 {
-    public AudioClip ShiftClip;
-    public AudioClip Shoot2043;
-    public AudioClip Shoot2003;
-    public AudioClip Explosion;
-    public AudioClip Pavarot;
     [Header("Camera")]
     public EnemyController EnemyController;
     public Transform camTarget; // თრანსფორმი რომელსაც ცინემაშინი დაყვება
@@ -39,8 +34,6 @@ public class PlayerController : ShootingDriver
     public bool canShift = true;    // შეუძლია თუ არა დროში გადახტეს
     public bool is2003 = false; // დროის შემოწმების ბულიანი
     public float cooldown = 0.25f;  // რამდენი დრო ჭირდება რომ დრო დაშიფტოს
-    public AudioSource Sound;
-
 
     SpriteRenderer characterRenderer;
     public Sprite sprite2003, sprite2043;
@@ -59,13 +52,21 @@ public class PlayerController : ShootingDriver
     SetVortex vortexController;
     Animator rippleController;
 
+    [Header("Sound")]
+    AudioSource soundManager;
+    public AudioClip shiftSound;
+    public AudioClip fire2003;
+    public AudioClip fire2043;
+    public AudioClip explosion;
+
     private void Start()
     {
         // თავიდანვე 2043ში რომ დაიყოს თამაში
-        EnemyController.GameOver.SetActive(false);
+        //EnemyController.GameOver.SetActive(false);
         t2043.SetActive(true);
         t2003.SetActive(false);
 
+        soundManager = GetComponent<AudioSource>();
         musicManager = FindObjectOfType<MusicManager>();
         vortexController = FindObjectOfType<SetVortex>();
         rippleController = FindObjectOfType<SetRipple>().GetComponent<Animator>();
@@ -91,24 +92,12 @@ public class PlayerController : ShootingDriver
         // დროში ნახტომის ინპუტის აღება
         if (Input.GetMouseButtonDown(1) && Time.timeScale > 0)
         {
-            Sound.clip = ShiftClip;
-            Sound.Play();
             if (canShift) shiftInput = true;
         }
 
         // სროლის ინპუტის აღება
         if (Input.GetMouseButton(0))
         {
-            if (t2043.activeSelf)
-            {
-                Sound.clip = Shoot2043;
-                Sound.Play();
-            }
-            else
-            {
-                Sound.clip = Shoot2003;
-                Sound.Play();
-            }
             if (canShoot) if (shootInput == false) shootInput = true;
         }
     }
@@ -214,6 +203,7 @@ public class PlayerController : ShootingDriver
         vortexController.is2003 = is2003;
         rippleController.Play("Ripple");
 
+        soundManager.PlayOneShot(shiftSound);
         CameraShake(shiftShakeStrength, shiftShakeLength);
 
         // ნახტომის ქულდაუნზე გაშვება
@@ -235,6 +225,9 @@ public class PlayerController : ShootingDriver
         newBullet.eulerAngles += new Vector3(0, 0, Random.Range(-bulletSpread, bulletSpread) + firingPoint.parent.rotation.z);
 
         CameraShake(bulletShakeStrength, bulletShakeLength);
+
+        if (is2003) { soundManager.PlayOneShot(fire2003); }
+        else { soundManager.PlayOneShot(fire2043); }
 
         // სროლის ქულდაუნზე გაშვება
         StartCoroutine(ShootCooldown());
@@ -262,8 +255,6 @@ public class PlayerController : ShootingDriver
             }
         }
     }
-
-
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Bullet")
@@ -271,24 +262,21 @@ public class PlayerController : ShootingDriver
             hP--;
             if (hP == 0)
             {
-                Sound.clip = Explosion;
-                Sound.Play();
                 EnemyController.GameOver.SetActive(true);
                 DestroyCombatant();
             }
         }
         else if (other.tag == "Obstacle")
         {
-            Sound.clip = Explosion;
-            Sound.Play();
             EnemyController.GameOver.SetActive(true);
             DestroyCombatant();
         }
     }
     public void DestroyCombatant()
     {
+        soundManager.PlayOneShot(explosion);
         // აქ იქნება სიკვდილის და რესტარტის ფუნქცია. ამჯერად უბრალოდ სცენა დარესეტდება
-        
+
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void Restart()

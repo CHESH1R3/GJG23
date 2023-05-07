@@ -591,7 +591,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557346649}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e202933e72d1a8e499a007302d23ed70, type: 3}
   m_Name: 
@@ -599,6 +599,7 @@ MonoBehaviour:
   playerController: {fileID: 730434029}
   enemyObjects:
   - {fileID: 0}
+  GameOver: {fileID: 0}
 --- !u!4 &593253175 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8425315962972241361, guid: 21261d6b1df19244680fff5dfa0b082d, type: 3}
@@ -1623,6 +1624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   enemyObjects: []
+  GameOver: {fileID: 0}
 --- !u!4 &2546956729827846531
 Transform:
   m_ObjectHideFlags: 0
@@ -2498,7 +2500,7 @@ SpriteRenderer:
   m_Size: {x: 6000, y: 16.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &6815622169227365162
@@ -2566,7 +2568,7 @@ SpriteRenderer:
   m_Size: {x: 6000, y: 16.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &7492020052847628774

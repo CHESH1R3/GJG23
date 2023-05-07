@@ -455,6 +455,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Environment
       objectReference: {fileID: 0}
+    - target: {fileID: 6637539253895751439, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
+      propertyPath: m_Color.a
+      value: 0.2509804
+      objectReference: {fileID: 0}
     - target: {fileID: 7435872121235023103, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
       propertyPath: parallaxEffect
       value: -0.25
