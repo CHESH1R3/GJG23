@@ -16,6 +16,7 @@ public class TrafficController : MonoBehaviour
 
     bool move = false; // იმოძრაოს თუ არა გეიმობჯექთმა
     bool active = false; // უჩინარი მანქანა გააქტიურდა თუ არა
+    bool canBeDestroyed = false;
 
 
     // სიკვდილის ფუნქცია
@@ -49,6 +50,21 @@ public class TrafficController : MonoBehaviour
         if (collision.tag == "Bullet")
         {
             Die();
+        }
+    }
+
+    private void OnBecameVisible()
+    {
+        print("visible");
+        canBeDestroyed = true;
+    }
+
+    private void OnBecameInvisible()
+    {
+        print("invissible");
+        if(canBeDestroyed)
+        {
+            Destroy(gameObject);
         }
     }
 
