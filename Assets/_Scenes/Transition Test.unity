@@ -123,63 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &60280947 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5365753550131687893, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-  m_PrefabInstance: {fileID: 6455199453529151839}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &60280950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60280947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f17d2e57143ed640bf040b787ff31e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  parallaxEffect: -0.25
---- !u!1 &79210969 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3507477056857574968, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-  m_PrefabInstance: {fileID: 6455199453529151839}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &79210972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 79210969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f17d2e57143ed640bf040b787ff31e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  parallaxEffect: 0.5
---- !u!1 &361933745 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1224533069730912464, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-  m_PrefabInstance: {fileID: 6455199453529151839}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &361933748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 361933745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f17d2e57143ed640bf040b787ff31e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  parallaxEffect: 0.33333334
 --- !u!114 &383519459 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6716644540335016283, guid: bce03cfe6ee9f0b46ad1f475463381d3, type: 3}
@@ -232,25 +175,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1147154691, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
   m_PrefabInstance: {fileID: 6455199453529151839}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1331969255 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7242393777483396573, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-  m_PrefabInstance: {fileID: 6455199453529151839}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1331969258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331969255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f17d2e57143ed640bf040b787ff31e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  parallaxEffect: 0.75
 --- !u!1001 &1476099610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,6 +182,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1141446729, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 7972084233781977213, guid: 31cf2ddce1ba3f14bae27cc99bb8ea14, type: 2}
     - target: {fileID: 7492020052235884553, guid: 521c53bf46dfef44c9d5d157d15396f9, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -349,6 +277,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6455199453999271298, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
   m_PrefabInstance: {fileID: 6455199453529151839}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1678415071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678415069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e202933e72d1a8e499a007302d23ed70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
+  enemyObjects: []
+  GameOver: {fileID: 0}
 --- !u!4 &1738563667 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1738563667, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
@@ -371,42 +314,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 534954711, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 765762654786606657, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051455784612531409, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-      propertyPath: parallaxEffect
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 2275557857596972440, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-      propertyPath: parallaxEffect
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2759091104820174257, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-      propertyPath: parallaxEffect
-      value: 0.6666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 4670913833040787158, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5630769115495376970, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219376877666744056, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6455199452975003140, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-      propertyPath: playerController
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6455199452975003141, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -455,17 +362,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Environment
       objectReference: {fileID: 0}
-    - target: {fileID: 6637539253895751439, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-      propertyPath: m_Color.a
-      value: 0.2509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 7435872121235023103, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-      propertyPath: parallaxEffect
-      value: -0.25
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8888896401652375279, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
-    - {fileID: 6455199452975003140, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23109e9bde4b7fd49bc38c3688454621, type: 3}
 --- !u!1001 &6716644542393948539
 PrefabInstance:
