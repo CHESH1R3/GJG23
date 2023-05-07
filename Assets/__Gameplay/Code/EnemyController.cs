@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     float speed;
 
     public GameObject[] enemyObjects;
+    public GameObject GameOver;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+        GameOver.SetActive(false);
         playerTransform = playerController.camTarget;
 
         speed = playerController.automaticSpeed;
@@ -42,5 +44,8 @@ public class EnemyController : MonoBehaviour
                 }
             }
         }
+
+        
+        
     }
 }

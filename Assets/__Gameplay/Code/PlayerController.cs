@@ -7,7 +7,13 @@ using Unity.Mathematics;
 
 public class PlayerController : ShootingDriver
 {
+    public AudioClip ShiftClip;
+    public AudioClip Shoot2043;
+    public AudioClip Shoot2003;
+    public AudioClip Explosion;
+    public AudioClip Pavarot;
     [Header("Camera")]
+    public EnemyController EnemyController;
     public Transform camTarget; // თრანსფორმი რომელსაც ცინემაშინი დაყვება
     public Transform spriteTransform; // სპრაიტის თრანსფორმი რომელიც უნდა დატრიალდეს
 
@@ -33,6 +39,8 @@ public class PlayerController : ShootingDriver
     public bool canShift = true;    // შეუძლია თუ არა დროში გადახტეს
     public bool is2003 = false; // დროის შემოწმების ბულიანი
     public float cooldown = 0.25f;  // რამდენი დრო ჭირდება რომ დრო დაშიფტოს
+    public AudioSource Sound;
+
 
     SpriteRenderer characterRenderer;
     public Sprite sprite2003, sprite2043;
@@ -54,7 +62,7 @@ public class PlayerController : ShootingDriver
     private void Start()
     {
         // თავიდანვე 2043ში რომ დაიყოს თამაში
-
+        EnemyController.GameOver.SetActive(false);
         t2043.SetActive(true);
         t2003.SetActive(false);
 
@@ -83,12 +91,24 @@ public class PlayerController : ShootingDriver
         // დროში ნახტომის ინპუტის აღება
         if (Input.GetMouseButtonDown(1) && Time.timeScale > 0)
         {
+            Sound.clip = ShiftClip;
+            Sound.Play();
             if (canShift) shiftInput = true;
         }
 
         // სროლის ინპუტის აღება
         if (Input.GetMouseButton(0))
         {
+            if (t2043.activeSelf)
+            {
+                Sound.clip = Shoot2043;
+                Sound.Play();
+            }
+            else
+            {
+                Sound.clip = Shoot2003;
+                Sound.Play();
+            }
             if (canShoot) if (shootInput == false) shootInput = true;
         }
     }
@@ -251,18 +271,29 @@ public class PlayerController : ShootingDriver
             hP--;
             if (hP == 0)
             {
+                Sound.clip = Explosion;
+                Sound.Play();
+                EnemyController.GameOver.SetActive(true);
                 DestroyCombatant();
             }
         }
         else if (other.tag == "Obstacle")
         {
+            Sound.clip = Explosion;
+            Sound.Play();
+            EnemyController.GameOver.SetActive(true);
             DestroyCombatant();
         }
     }
     public void DestroyCombatant()
     {
         // აქ იქნება სიკვდილის და რესტარტის ფუნქცია. ამჯერად უბრალოდ სცენა დარესეტდება
-
+        
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void Restart()
+    {
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
