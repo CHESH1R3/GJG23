@@ -128,10 +128,6 @@ public class EnemyCombatant : ShootingDriver
         rightHitDown = Physics2D.Raycast(raycastPointXDown.position, Vector2.right, 8);
         Debug.DrawRay(raycastPointXDown.position, Vector2.right, Color.yellow);
 
-
-
-
-
         if (upHitForward && upHitBackward && downHitForward && downHitBackward)
         {
             obsticleLocation = "upAndDown";
@@ -213,11 +209,7 @@ public class EnemyCombatant : ShootingDriver
         {
             paralellEnemy = false;
         }
-
-
     }
-
-   
     void CheckAim()
     {
         if (Mathf.Abs(transform.position.y - playerTransform.position.y) < aimThreshold)
@@ -249,17 +241,15 @@ public class EnemyCombatant : ShootingDriver
         }
         //print(preventSteering);
         ObsticleAvoidance();
-
-
     }
 
     void Shoot()
     {
-        print("SHOT");
         canShoot = false;
 
         // ტყვიის შექმნა და ტრანსფორმის ამოღება
         Transform newBullet = Instantiate(bulletPrefab, firingPoint.position, firingPoint.rotation).transform;
+        newBullet.parent = transform.parent;
         // ტყვიაზე ცოტა სპრედის დადება
         newBullet.eulerAngles = new Vector3(newBullet.rotation.x, newBullet.rotation.y, Random.Range(-bulletSpread, bulletSpread));
 

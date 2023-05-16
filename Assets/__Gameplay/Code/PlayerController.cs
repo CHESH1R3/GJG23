@@ -7,6 +7,8 @@ using Unity.Mathematics;
 
 public class PlayerController : ShootingDriver
 {
+    public bool isDead = false;
+
     [Header("Camera")]
     public EnemyController EnemyController;
     public Transform camTarget; // თრანსფორმი რომელსაც ცინემაშინი დაყვება
@@ -51,6 +53,7 @@ public class PlayerController : ShootingDriver
     MusicManager musicManager;
     SetVortex vortexController;
     Animator rippleController;
+    SetFX fxController;
 
     [Header("Sound")]
     AudioSource soundManager;
@@ -70,12 +73,14 @@ public class PlayerController : ShootingDriver
         musicManager = FindObjectOfType<MusicManager>();
         vortexController = FindObjectOfType<SetVortex>();
         rippleController = FindObjectOfType<SetRipple>().GetComponent<Animator>();
+        fxController = FindObjectOfType<SetFX>();
 
         characterRenderer = GetComponentInChildren<SpriteRenderer>();
 
         is2003 = false;
         musicManager.is2003 = is2003;
         vortexController.is2003 = is2003;
+        fxController.is2003 = is2003;
     }
 
     private void Update()
@@ -100,24 +105,35 @@ public class PlayerController : ShootingDriver
         {
             if (canShoot) if (shootInput == false) shootInput = true;
         }
+
+        if( isDead)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-        Move();
-        Steer();
-        Drive();
-
-        if (shiftInput)
+        if (!isDead)
         {
-            shiftInput = false;
-            Shift();
-        }
+            Move();
+            Steer();
+            Drive();
 
-        if (shootInput)
-        {
-            shootInput = false;
-            Shoot();
+            if (shiftInput)
+            {
+                shiftInput = false;
+                Shift();
+            }
+
+            if (shootInput)
+            {
+                shootInput = false;
+                Shoot();
+            }
         }
     }
 
@@ -202,6 +218,7 @@ public class PlayerController : ShootingDriver
         musicManager.is2003 = is2003;
         vortexController.is2003 = is2003;
         rippleController.Play("Ripple");
+        fxController.is2003 = is2003;
 
         soundManager.PlayOneShot(shiftSound);
         CameraShake(shiftShakeStrength, shiftShakeLength);
@@ -275,13 +292,18 @@ public class PlayerController : ShootingDriver
     public void DestroyCombatant()
     {
         soundManager.PlayOneShot(explosion);
+
+        musicManager.gameOver.Play();
+
+        isDead = true;
+        musicManager.a2003.enabled = false;
+        musicManager.a2043.enabled = false;
+
         // აქ იქნება სიკვდილის და რესტარტის ფუნქცია. ამჯერად უბრალოდ სცენა დარესეტდება
 
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void Restart()
     {
-        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

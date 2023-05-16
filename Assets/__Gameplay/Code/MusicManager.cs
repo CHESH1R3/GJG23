@@ -5,7 +5,7 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour
 {
     public float transitionSpeed;
-    public AudioSource a2003, a2043;
+    public AudioSource a2003, a2043, gameOver;
 
     public bool is2003;
 

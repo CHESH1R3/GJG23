@@ -59,6 +59,8 @@ Material:
     - Vector1_37BECE45: 0.25
     - Vector1_90AD79C5: 12
     - _EnableExternalAlpha: 0
+    - _Node_Opacity: 0.125
+    - _Pixelation: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:

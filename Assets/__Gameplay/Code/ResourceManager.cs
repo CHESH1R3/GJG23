@@ -26,6 +26,5 @@ public class ResourceManager : MonoBehaviour
             Oxigen.value--;
             Energy.value++;
         }
-                
     }
 }

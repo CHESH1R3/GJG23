@@ -668,7 +668,7 @@
     "m_DefaultRefNameVersion": 0,
     "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector1_37BECE45",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_Node_Opacity",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -1064,8 +1064,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1134.0,
-            "y": 516.0,
+            "x": -1264.9998779296875,
+            "y": 744.0,
             "width": 208.0,
             "height": 302.0
         }
@@ -1314,10 +1314,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1402.0,
-            "y": 711.0,
-            "width": 158.00001525878907,
-            "height": 34.0
+            "x": -1532.9998779296875,
+            "y": 939.0000610351563,
+            "width": 157.0,
+            "height": 33.99993896484375
         }
     },
     "m_Slots": [
@@ -1782,7 +1782,7 @@
     "m_DefaultRefNameVersion": 0,
     "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Boolean_4b961c4ada6e43bc94be045f3c543894",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_Pixelation",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -2336,10 +2336,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 274.00006103515627,
-            "y": 486.0000305175781,
-            "width": 145.00003051757813,
-            "height": 137.99996948242188
+            "x": 264.0,
+            "y": 501.0,
+            "width": 144.99996948242188,
+            "height": 138.0
         }
     },
     "m_Slots": [
@@ -2354,7 +2354,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_filter": 1,
+    "m_filter": 0,
     "m_wrap": 1,
     "m_aniso": 0
 }
